@@ -7,7 +7,14 @@ import services.impl.BookManagement;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class BookController {
+public class BookController implements DocumentController{
+    private static BookController bookControllerInstance = null;
+    public static BookController getInstance(){
+        if(bookControllerInstance == null){
+            bookControllerInstance = new BookController();
+        }
+        return bookControllerInstance;
+    }
     BookManagement bookManagement;
 
     public BookController() {

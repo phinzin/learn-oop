@@ -8,13 +8,19 @@ import services.impl.MagazineManagement;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MagazineController {
+public class MagazineController implements DocumentController{
     MagazineManagement magazineManagement;
 
     public MagazineController() {
         magazineManagement = new MagazineManagement();
     }
-
+    private static MagazineController intance = null;
+    public static MagazineController getInstance(){
+        if(intance == null){
+            intance = new MagazineController();
+        }
+        return intance;
+    }
     public void add() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("id: ");

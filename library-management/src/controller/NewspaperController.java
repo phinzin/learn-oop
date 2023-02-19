@@ -8,13 +8,20 @@ import services.impl.NewspaperManagement;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class NewspaperController {
+public class NewspaperController implements DocumentController{
     NewspaperManagement newspaperManagement;
 
     public NewspaperController() {
         newspaperManagement = new NewspaperManagement();
     }
 
+    private static NewspaperController instance;
+    public static NewspaperController getInstance(){
+        if(instance == null){
+            instance = new NewspaperController();
+        }
+        return instance;
+    }
     public void add() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("id: ");

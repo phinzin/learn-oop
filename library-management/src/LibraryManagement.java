@@ -1,16 +1,15 @@
 import controller.BookController;
+import controller.DocumentControllerFactory;
 import controller.MagazineController;
 import controller.NewspaperController;
 import model.Constants;
+import model.DocumentType;
 
 import java.util.Scanner;
 
 public class LibraryManagement {
     public static void main(String[] args) {
         boolean shouldContinue = true;
-        BookController bookController = new BookController();
-        MagazineController magazineController = new MagazineController();
-        NewspaperController newspaperController = new NewspaperController();
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         do {
             System.out.println(Constants.PLEASE_SELECT_MENU_OPTIONS + "\n" + Constants.ROOT_MENU);
@@ -21,18 +20,12 @@ public class LibraryManagement {
                     boolean continueAdding = true;
                     do {
                         System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
-                        switch (Integer.parseInt(scanner.nextLine())) {
+                        int selectedDocType = Integer.parseInt(scanner.nextLine());
+                        switch (selectedDocType) {
                             case 1:
-                                System.out.println("add book");
-                                bookController.add();
-                                break;
                             case 2:
-                                System.out.println("add newspaper");
-                                newspaperController.add();
-                                break;
                             case 3:
-                                System.out.println("add magazine");
-                                magazineController.add();
+                                DocumentControllerFactory.getController(DocumentType.getEnumByValue(selectedDocType)).add();
                                 break;
                             case 4:
                                 System.out.println("go back!");
