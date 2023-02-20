@@ -1,7 +1,5 @@
-import controller.BookController;
+import controller.DocumentController;
 import controller.DocumentControllerFactory;
-import controller.MagazineController;
-import controller.NewspaperController;
 import model.Constants;
 import model.DocumentType;
 
@@ -17,27 +15,11 @@ public class LibraryManagement {
             System.out.println("selectedMenuOptions: " + selectedMenuOptions);
             switch (selectedMenuOptions) {
                 case 1:
-                    boolean continueAdding = true;
-                    do {
-                        System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
-                        int selectedDocType = Integer.parseInt(scanner.nextLine());
-                        switch (selectedDocType) {
-                            case 1:
-                            case 2:
-                            case 3:
-                                DocumentControllerFactory.getController(DocumentType.getEnumByValue(selectedDocType)).add();
-                                break;
-                            case 4:
-                                System.out.println("go back!");
-                                continueAdding = false;
-                                break;
-                            case 5:
-                                System.out.println("exit");
-                                return;
-                            default:
-                                System.out.println(Constants.INCORRECT_OPTIONS_MSG);
-                        }
-                    } while (continueAdding);
+                    System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
+                    int selectedDocType = Integer.parseInt(scanner.nextLine());
+                    DocumentController ct = DocumentControllerFactory.getController(
+                            selectedDocType);
+                    ct.add();
                     break;
                 case 2:
                     System.out.println("selected 2");
