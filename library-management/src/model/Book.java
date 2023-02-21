@@ -4,10 +4,6 @@ public class Book extends Document {
     private String author;
     private Integer noOfPages;
 
-    private Book(Integer id, String publisher, String version) {
-        super(id, publisher, version);
-    }
-
     private Book(Builder builder) {
         super(builder.id, builder.publisher, builder.version);
         this.author = builder.author;

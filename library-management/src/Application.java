@@ -1,12 +1,17 @@
-import controller.DocumentController;
-import controller.DocumentControllerFactory;
+import model.Action;
 import model.Constants;
-import model.DocumentType;
+import model.Document;
+import model.DocumentFactory;
+import services.impl.DocumentManagement;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class LibraryManagement {
-    public static void main(String[] args) {
+public class Application {
+    public static void main(String[] args) throws IOException {
+        List<Action> actions = new ArrayList<Action>();
         boolean shouldContinue = true;
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         do {
@@ -16,22 +21,22 @@ public class LibraryManagement {
             switch (selectedMenuOptions) {
                 case 1:
                     System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
-                    int selectedDocType = Integer.parseInt(scanner.nextLine());
-                    DocumentController ct = DocumentControllerFactory.getController(
-                            selectedDocType);
-                    ct.add();
+                    Document document = DocumentFactory.getDocument(Integer.parseInt(scanner.nextLine()));
+                    DocumentManagement.getInstance().add(document);
                     break;
                 case 2:
-                    System.out.println("selected 2");
+                    System.out.print(Constants.ID_TO_DELETE);
+                    DocumentManagement.getInstance().delete(Integer.parseInt(scanner.nextLine()));
                     break;
                 case 3:
-                    System.out.println("selected 3");
+                    DocumentManagement.getInstance().display();
                     break;
                 case 4:
-                    System.out.println("selected 4");
+                    System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
+                    Document doc = DocumentManagement.getInstance().search(Integer.parseInt(scanner.nextLine()));
+                    System.out.println(doc.toString());
                     break;
                 case 5:
-                    System.out.println("selected 5");
                     shouldContinue = false;
                     break;
                 default:

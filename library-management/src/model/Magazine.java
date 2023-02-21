@@ -4,10 +4,6 @@ public class Magazine extends Document {
     Integer noOfPublisher;
     String publishMonth;
 
-    private Magazine(Integer id, String publisher, String version) {
-        super(id, publisher, version);
-    }
-
     private Magazine(Builder builder) {
         super(builder.id, builder.publisher, builder.version);
         this.noOfPublisher = builder.noOfPublisher;
@@ -48,5 +44,16 @@ public class Magazine extends Document {
 
     public String getPublishMonth() {
         return publishMonth;
+    }
+
+    @Override
+    public String toString() {
+        return "Magazine{" +
+                "noOfPublisher=" + noOfPublisher +
+                ", publishMonth='" + publishMonth + '\'' +
+                ", id=" + id +
+                ", publisher='" + publisher + '\'' +
+                ", version='" + version + '\'' +
+                '}';
     }
 }

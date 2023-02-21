@@ -3,10 +3,6 @@ package model;
 public class Newspaper extends Document {
     String publishOn;
 
-    private Newspaper(Integer id, String publisher, String version) {
-        super(id, publisher, version);
-    }
-
     private Newspaper(Builder builder) {
         super(builder.id, builder.publisher, builder.version);
         this.publishOn = builder.publishOn;
@@ -34,5 +30,16 @@ public class Newspaper extends Document {
         public Newspaper build() {
             return new Newspaper(this);
         }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Newspaper{" +
+                "publishOn='" + publishOn + '\'' +
+                ", id=" + id +
+                ", publisher='" + publisher + '\'' +
+                ", version='" + version + '\'' +
+                '}';
     }
 }

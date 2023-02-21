@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public abstract class Document {
+public abstract class Document{
     Integer id;
     String publisher;
     String version;

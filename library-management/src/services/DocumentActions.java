@@ -5,11 +5,11 @@ import model.Document;
 import java.io.IOException;
 
 public interface DocumentActions {
-    public void delete(String id);
+    public void delete(Integer id);
 
     public void display();
 
-    public void search();
+    public Document search(Integer id);
 
     void add(Document document) throws IOException;
 }
