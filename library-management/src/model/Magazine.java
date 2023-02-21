@@ -1,59 +1,51 @@
 package model;
 
-public class Magazine extends Document {
-    Integer noOfPublisher;
-    String publishMonth;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    private Magazine(Builder builder) {
-        super(builder.id, builder.publisher, builder.version);
-        this.noOfPublisher = builder.noOfPublisher;
-        this.publishMonth = builder.publishMonth;
+public class Magazine implements IDocument {
+
+    List<Attribute> attributes;
+    private Magazine() {
+
     }
 
-    public static class Builder {
-        Integer id;
-        String publisher;
-        String version;
-        Integer noOfPublisher;
-        String publishMonth;
+    public Magazine(Builder builder) {
+        this.attributes = builder.attributes;
+    }
 
-        public Builder(Integer id, String publisher, String version) {
-            this.id = id;
-            this.publisher = publisher;
-            this.version = version;
+    public static class Builder implements IBuilder{
+        private List<Attribute> attributes;
+        public Builder(){
+            this.attributes = new ArrayList<>();
         }
-
-        public Builder withNoOfPublisher(Integer noOfPublisher) {
-            this.noOfPublisher = noOfPublisher;
+        public Builder withAttribute(Attribute attribute){
+            this.attributes.add(attribute);
             return this;
         }
-
-        public Builder withPublishMonth(String publishMonth) {
-            this.publishMonth = publishMonth;
-            return this;
-        }
-
-        public Magazine build() {
+        public IDocument build(){
             return new Magazine(this);
         }
     }
 
-    public Integer getNoOfPublisher() {
-        return noOfPublisher;
+    public void display(){
+        for (Attribute attribute: attributes){
+            System.out.println(attribute.toString());
+        }
     }
-
-    public String getPublishMonth() {
-        return publishMonth;
+    public Object getAttributeValueByName(String name) {
+        for (Attribute attribute:attributes){
+            if (attribute.getName().equals(name) ){
+                return attribute.getValue();
+            }
+        }
+        return null;
     }
-
-    @Override
+    public List<Attribute> getAttribute() {
+        return this.attributes;
+    }
     public String toString() {
-        return "Magazine{" +
-                "noOfPublisher=" + noOfPublisher +
-                ", publishMonth='" + publishMonth + '\'' +
-                ", id=" + id +
-                ", publisher='" + publisher + '\'' +
-                ", version='" + version + '\'' +
-                '}';
+        return Arrays.toString(attributes.toArray())+"\n";
     }
 }

@@ -1,45 +1,54 @@
 package model;
 
-public class Newspaper extends Document {
-    String publishOn;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    private Newspaper(Builder builder) {
-        super(builder.id, builder.publisher, builder.version);
-        this.publishOn = builder.publishOn;
+public class Newspaper implements IDocument {
+    List<Attribute> attributes;
+
+    private Newspaper() {
+
     }
 
-    public static class Builder {
-        Integer id;
-        String publisher;
-        String version;
-        String publishOn;
+    public Newspaper(Newspaper.Builder builder) {
+        this.attributes = builder.attributes;
+    }
 
-        public Builder(Integer id,
-                       String publisher,
-                       String version) {
-            this.id = id;
-            this.publisher = publisher;
-            this.version = version;
+    public static class Builder implements IBuilder{
+        private List<Attribute> attributes;
+
+        public Builder() {
+            this.attributes = new ArrayList<>();
         }
 
-        public Builder withPublishOn(String publishOn) {
-            this.publishOn = publishOn;
+        public Newspaper.Builder withAttribute(Attribute attribute) {
+            this.attributes.add(attribute);
             return this;
         }
 
-        public Newspaper build() {
+        public IDocument build() {
             return new Newspaper(this);
         }
-
     }
 
-    @Override
+    public void display() {
+        for (Attribute attribute : attributes) {
+            System.out.println(attribute.toString());
+        }
+    }
+    public Object getAttributeValueByName(String name) {
+        for (Attribute attribute:attributes){
+            if (attribute.getName().equals(name) ){
+                return attribute.getValue();
+            }
+        }
+        return null;
+    }
+    public List<Attribute> getAttribute() {
+        return this.attributes;
+    }
     public String toString() {
-        return "Newspaper{" +
-                "publishOn='" + publishOn + '\'' +
-                ", id=" + id +
-                ", publisher='" + publisher + '\'' +
-                ", version='" + version + '\'' +
-                '}';
+        return Arrays.toString(attributes.toArray())+"\n";
     }
 }

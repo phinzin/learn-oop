@@ -1,12 +1,11 @@
 package repository.impl;
 
-import model.Document;
+import model.Attribute;
+import model.IDocument;
 import repository.IDocumentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
 
 public class DocumentRepository implements IDocumentRepository {
     public static DocumentRepository documentRepository = null;
@@ -16,39 +15,41 @@ public class DocumentRepository implements IDocumentRepository {
         }
         return documentRepository;
     }
-    List<Document> docs;
+    List<IDocument> docs;
     DocumentRepository(){
         docs = new ArrayList<>();
 
     }
     @Override
-    public void add(Document document){
+    public void add(IDocument document){
         docs.add(document);
     }
 
     @Override
-    public void update(Document document) {
-        docs = docs.stream().map(o -> o.getId() == document.getId() ? document : o)
-                                     .collect(toList());
+    public void update(IDocument document) {
+//        docs = docs.stream().map(o -> o.get == document.getId() ? document : o)
+//                                     .collect(toList());
     }
 
     @Override
     public void delete(Integer id) {
-        docs.removeIf(document -> document.getId().equals(id));
+    // todo: delete
     }
 
     @Override
-    public Document get(Integer id) {
-        for (Document doc:docs){
-            if(doc.getId().equals(id)){
-                return doc;
+    public IDocument get(Integer id) {
+        for (IDocument doc:docs){
+            for(Attribute attribute:doc.getAttribute()){
+                if(attribute.getName().equals("id") && attribute.getValue().equals(id)){
+                    return doc;
+                }
             }
         }
         return null;
     }
 
     @Override
-    public List<Document> getAll() {
+    public List<IDocument> getAll() {
         return docs;
     }
 }

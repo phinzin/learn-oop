@@ -1,10 +1,8 @@
 package services.impl;
 
-import model.Document;
+import model.IDocument;
 import repository.impl.DocumentRepository;
 import services.DocumentActions;
-
-import java.io.IOException;
 
 public class DocumentManagement implements DocumentActions {
     private static DocumentManagement documentManagement;
@@ -29,12 +27,12 @@ public class DocumentManagement implements DocumentActions {
     }
 
     @Override
-    public Document search(Integer id) {
+    public IDocument search(Integer id) {
         return documentRepository.get(id);
     }
 
     @Override
-    public void add(Document document){
+    public void add(IDocument document){
         documentRepository.add(document);
     }
 }

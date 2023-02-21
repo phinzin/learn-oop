@@ -1,59 +1,57 @@
 package model;
 
-public class Book extends Document {
-    private String author;
-    private Integer noOfPages;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    private Book(Builder builder) {
-        super(builder.id, builder.publisher, builder.version);
-        this.author = builder.author;
-        this.noOfPages = builder.noOfPages;
+public class Book implements IDocument {
+
+    List<Attribute> attributes;
+    private Book() {
+
     }
 
-    public static class Builder {
-        private Integer id;
-        private String publisher;
-        private String version;
-        private String author;
-        private Integer noOfPages;
+    public Book(Book.Builder builder) {
+        this.attributes = builder.attributes;
+    }
 
-        public Builder(Integer id, String publisher, String version) {
-            this.id = id;
-            this.publisher = publisher;
-            this.version = version;
+    @Override
+    public Object getAttributeValueByName(String name) {
+        for (Attribute attribute:attributes){
+            if (attribute.getName().equals(name) ){
+                return attribute.getValue();
+            }
         }
+        return null;
+    }
 
-        public Builder withAuthor(String author) {
-            this.author = author;
+    @Override
+    public List<Attribute> getAttribute() {
+        return this.attributes;
+    }
+
+    public static class Builder implements IBuilder{
+        List<Attribute> attributes;
+        public Builder(){
+            attributes = new ArrayList<>();
+        }
+        public IBuilder withAttribute(Attribute attribute){
+            attributes.add(attribute);
             return this;
         }
-
-        public Builder withNoOfPages(Integer noOfPages) {
-            this.noOfPages = noOfPages;
-            return this;
-        }
-
-        public Book build() {
+        public IDocument build(){
             return new Book(this);
         }
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public Integer getNoOfPages() {
-        return noOfPages;
+    public void display(){
+        for (Attribute attribute: attributes){
+            System.out.println(attribute.toString());
+        }
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", publisher='" + publisher + '\'' +
-                ", version='" + version + '\'' +
-                ", author='" + author + '\'' +
-                ", noOfPages=" + noOfPages +
-                '}';
+        return Arrays.toString(attributes.toArray())+"\n";
     }
 }

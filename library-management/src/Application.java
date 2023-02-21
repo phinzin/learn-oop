@@ -1,7 +1,7 @@
 import model.Action;
 import model.Constants;
-import model.Document;
 import model.DocumentFactory;
+import model.IDocument;
 import services.impl.DocumentManagement;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Application {
             switch (selectedMenuOptions) {
                 case 1:
                     System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
-                    Document document = DocumentFactory.getDocument(Integer.parseInt(scanner.nextLine()));
+                    IDocument document = DocumentFactory.getDocument(Integer.parseInt(scanner.nextLine()));
                     DocumentManagement.getInstance().add(document);
                     break;
                 case 2:
@@ -33,7 +33,7 @@ public class Application {
                     break;
                 case 4:
                     System.out.println(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU);
-                    Document doc = DocumentManagement.getInstance().search(Integer.parseInt(scanner.nextLine()));
+                    IDocument doc = DocumentManagement.getInstance().search(Integer.parseInt(scanner.nextLine()));
                     System.out.println(doc.toString());
                     break;
                 case 5:

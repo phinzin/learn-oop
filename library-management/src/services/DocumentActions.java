@@ -1,6 +1,6 @@
 package services;
 
-import model.Document;
+import model.IDocument;
 
 import java.io.IOException;
 
@@ -9,7 +9,8 @@ public interface DocumentActions {
 
     public void display();
 
-    public Document search(Integer id);
+    public IDocument search(Integer id);
 
-    void add(Document document) throws IOException;
+    void add(IDocument document) throws IOException;
+
 }

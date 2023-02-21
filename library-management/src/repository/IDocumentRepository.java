@@ -1,18 +1,18 @@
 package repository;
 
-import model.Document;
+import model.IDocument;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface IDocumentRepository {
-    public void add(Document document) throws IOException;
+    public void add(IDocument document) throws IOException;
 
-    public void update(Document document);
+    public void update(IDocument document);
 
     public void delete(Integer id);
 
-    public Document get(Integer id);
+    public IDocument get(Integer id);
 
-    public List<Document> getAll();
+    public List<IDocument> getAll();
 }
