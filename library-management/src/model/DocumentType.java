@@ -7,12 +7,13 @@ public enum DocumentType {
 
     public final Integer value;
 
-    private DocumentType(Integer value){
+    DocumentType(Integer value) {
         this.value = value;
     }
-    public static DocumentType getEnumByValue(Integer code){
-        for(DocumentType e : DocumentType.values()){
-            if(e.value.equals(code)) return e;
+
+    public static DocumentType getEnumByValue(Integer code) {
+        for (DocumentType e : DocumentType.values()) {
+            if (e.value.equals(code)) return e;
         }
         return null;
     }

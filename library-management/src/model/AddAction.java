@@ -2,9 +2,9 @@ package model;
 
 import java.util.List;
 
-public class AddAction extends Action{
+public class AddAction extends Action {
     public AddAction(String message, List<Object> objs) {
-        super(message,objs);
+        super(message, objs);
         attributes.add(new Attribute("document"));
     }
 

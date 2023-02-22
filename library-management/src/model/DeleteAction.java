@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DeleteAction extends Action {
     public DeleteAction(String message, List<Object> objs) {
-        super(message,objs);
+        super(message, objs);
         attributes.add(new Attribute("name"));
         attributes.add(new Attribute("value"));
     }

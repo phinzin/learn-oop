@@ -14,7 +14,7 @@ public abstract class Action extends Object {
 
     }
 
-    public void excute(){
+    public void excute() {
         System.out.println(message);
         this.inputData();
         doAction();

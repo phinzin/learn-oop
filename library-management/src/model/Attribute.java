@@ -8,17 +8,18 @@ public class Attribute {
 
     boolean isInput = Boolean.TRUE;
 
-    public Attribute(String name, Object value){
+    public Attribute(String name, Object value) {
         this.name = name;
         this.value = value;
     }
 
-    public Attribute(String name, Object value, Boolean isInput){
+    public Attribute(String name, Object value, Boolean isInput) {
         this.name = name;
         this.value = value;
         this.isInput = isInput;
     }
-    public Attribute(String name){
+
+    public Attribute(String name) {
         this.name = name;
     }
 
@@ -27,7 +28,7 @@ public class Attribute {
     }
 
     public void inputData() {
-        System.out.print("int put "+this.name+": ");
+        System.out.print("int put " + this.name + ": ");
         this.value = new Scanner(System.in).nextLine();
     }
 
@@ -52,7 +53,7 @@ public class Attribute {
     }
 
     public void display() {
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 
     @Override
