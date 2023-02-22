@@ -1,12 +1,9 @@
-import model.Action;
 import model.Constants;
 import model.DocumentFactory;
 import model.IDocument;
 import services.impl.DocumentManagement;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {

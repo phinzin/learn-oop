@@ -27,8 +27,7 @@ public class DocumentRepository implements IDocumentRepository {
 
     @Override
     public void update(IDocument document) {
-//        docs = docs.stream().map(o -> o.get == document.getId() ? document : o)
-//                                     .collect(toList());
+
     }
 
     @Override
