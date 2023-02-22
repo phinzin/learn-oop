@@ -4,7 +4,7 @@ package model;
 import java.security.InvalidParameterException;
 
 public class DocumentFactory {
-    public static Object getDocument(Integer type) {
+    public static CommonObject getDocument(Integer type) {
         switch (type) {
             case 1:
                 return new Book();

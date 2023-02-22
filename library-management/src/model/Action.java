@@ -2,19 +2,17 @@ package model;
 
 import java.util.List;
 
-public abstract class Action extends Object {
+public abstract class Action extends CommonObject {
     String message = null;
-    List<Object> objs = null;
+    List<CommonObject> objs = null;
 
-    public Action(String message, List<Object> objs) {
+    public Action(String message, List<CommonObject> objs) {
         this.message = message;
-        this.attributes.clear();
         this.objs = objs;
-
 
     }
 
-    public void excute() {
+    public void execute() {
         System.out.println(message);
         this.inputData();
         doAction();

@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class ExitAction extends Action {
-    public ExitAction(String message, List<Object> objs) {
+    public ExitAction(String message, List<CommonObject> objs) {
         super(message, objs);
 
     }

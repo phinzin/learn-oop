@@ -1,6 +1,6 @@
 package model;
 
-public class Book extends Object {
+public class Book extends BaseDoc {
     public Book() {
         attributes.add(new Attribute("author"));
         attributes.add(new Attribute("noOfPages"));

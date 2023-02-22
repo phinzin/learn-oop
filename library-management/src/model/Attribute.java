@@ -23,12 +23,12 @@ public class Attribute {
         this.name = name;
     }
 
-    public void setValue(Object value) {
+    public void setValue(CommonObject value) {
         this.value = value;
     }
 
     public void inputData() {
-        System.out.print("int put " + this.name + ": ");
+        System.out.println("input " + this.name + ": ");
         this.value = new Scanner(System.in).nextLine();
     }
 

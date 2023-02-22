@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class DeleteAction extends Action {
-    public DeleteAction(String message, List<Object> objs) {
+    public DeleteAction(String message, List<CommonObject> objs) {
         super(message, objs);
         attributes.add(new Attribute("name"));
         attributes.add(new Attribute("value"));
@@ -12,8 +12,8 @@ public class DeleteAction extends Action {
 
     @Override
     public void doAction() {
-        Object findDoc = null;
-        for (Object commonDocument : objs) {
+        CommonObject findDoc = null;
+        for (CommonObject commonDocument : objs) {
             if (commonDocument.findByAttribute(this.attributes.get(0).getValue().toString(),
                                                this.attributes.get(1).getValue().toString()) != null) {
                 findDoc = commonDocument;

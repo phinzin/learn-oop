@@ -1,6 +1,6 @@
 package model;
 
-public class Newspaper extends Object {
+public class Newspaper extends BaseDoc {
 
     public Newspaper() {
         attributes.add(new Attribute("publishOn"));

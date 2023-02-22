@@ -1,6 +1,6 @@
 package model;
 
-public class Magazine extends Object {
+public class Magazine extends BaseDoc {
     public Magazine() {
         attributes.add(new Attribute("noOfPublisher"));
         attributes.add(new Attribute("publishMonth"));
