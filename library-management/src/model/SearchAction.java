@@ -2,11 +2,11 @@ package model;
 
 import java.util.List;
 
-public class DeleteAction extends Action {
+public class SearchAction extends Action {
     public static String ATT_NAME = "name";
     public static String ATT_VALUE = "value";
 
-    public DeleteAction(String message, List<CommonObject> objs) {
+    public SearchAction(String message, List<CommonObject> objs) {
         super(message, objs);
         attributes.add(new Attribute(ATT_NAME));
         attributes.add(new Attribute(ATT_VALUE));
@@ -23,7 +23,10 @@ public class DeleteAction extends Action {
                 break;
             }
         }
-        objs.remove(findDoc);
-
+        if (findDoc == null) {
+            System.out.println("not found!");
+            return;
+        }
+        findDoc.display();
     }
 }

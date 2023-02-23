@@ -4,13 +4,14 @@ package model;
 import java.security.InvalidParameterException;
 
 public class DocumentFactory {
-    public static CommonObject getDocument(Integer type) {
+    public static CommonObject getDocument(DocumentType type) {
+
         switch (type) {
-            case 1:
+            case BOOK:
                 return new Book();
-            case 2:
+            case MAGAZINE:
                 return new Magazine();
-            case 3:
+            case NEWSPAPER:
                 return new Newspaper();
             default:
                 throw new InvalidParameterException("1 ~ 3 please");

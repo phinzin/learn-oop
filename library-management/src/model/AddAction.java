@@ -12,7 +12,9 @@ public class AddAction extends Action {
 
     @Override
     public void doAction() {
-        CommonObject document = DocumentFactory.getDocument(findIntegerValueByAttributeName(ATT_DOCUMENT));
+        CommonObject document = DocumentFactory.getDocument(
+                                    DocumentType.getEnumByValue(
+                                        findIntegerValueByAttributeName(ATT_DOCUMENT)));
         objs.add(document.inputData());
     }
 }

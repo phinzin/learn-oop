@@ -58,10 +58,6 @@ public class Attribute {
 
     @Override
     public String toString() {
-        return "Attribute{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                ", isInput=" + isInput +
-                '}';
+        return String.format("Attribute{name = %s, value= %s, isInput= %s}",name,value,isInput);
     }
 }

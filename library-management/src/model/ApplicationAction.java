@@ -12,6 +12,7 @@ public class ApplicationAction extends Action {
                 new AddAction(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU, objs),
                 new DeleteAction(Constants.ID_TO_DELETE, objs),
                 new DisplayAction(Constants.DISPLAY_ALL_DOCS, objs),
+                new SearchAction(Constants.SEARCH_DOCUMENT, objs),
                 new ExitAction(Constants.EXIT, objs),
                 new DefaultAction(Constants.INCORRECT_OPTIONS_MSG, objs)
         };

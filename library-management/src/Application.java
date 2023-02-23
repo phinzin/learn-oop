@@ -7,7 +7,10 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        List<CommonObject> docs = new ArrayList<>();
-        new ApplicationAction(Constants.PLEASE_SELECT_MENU_OPTIONS + "\n" + Constants.ROOT_MENU, docs).execute();
+        new ApplicationAction(new StringBuilder(Constants.PLEASE_SELECT_MENU_OPTIONS)
+                                      .append(Constants.NEW_LINE)
+                                      .append(Constants.ROOT_MENU)
+                                      .append(Constants.NEW_LINE)
+                                      .toString(), new ArrayList<CommonObject>()).execute();
     }
 }

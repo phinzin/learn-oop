@@ -2,6 +2,7 @@ package model;
 
 public class Constants {
     public static final String EXIT = "exit";
+    public static final String SEARCH_DOCUMENT = "search document";
     public static String ROOT_MENU =
             "1. Add documents.\n2. Delete Document.\n3. Display Document Info.\n4. Search " + "Document.\n5. Exit Program.";
     public static String ADD_DOC_MENU = "1. Book.\n2. Newspaper.\n3. Magazine.";
@@ -11,5 +12,6 @@ public class Constants {
     public static String ADD_SUCCESS = "Added %s successfully!";
     public static String ID_TO_DELETE = "id to delete: ";
     public static String DISPLAY_ALL_DOCS = "display all docs:";
+    public static String NEW_LINE = "\n";
 
 }
