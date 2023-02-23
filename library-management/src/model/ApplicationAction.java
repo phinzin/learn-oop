@@ -4,10 +4,10 @@ import java.util.List;
 
 public class ApplicationAction extends Action {
     Action[] actions;
-
+    public static String ATT_FUNCTION = "function";
     public ApplicationAction(String message, List<CommonObject> objs) {
         super(message, objs);
-        attributes.add(new Attribute("function"));
+        attributes.add(new Attribute(ATT_FUNCTION));
         actions = new Action[]{
                 new AddAction(Constants.PLEASE_SELECT_DOC_TYPE + "\n" + Constants.ADD_DOC_MENU, objs),
                 new DeleteAction(Constants.ID_TO_DELETE, objs),
@@ -20,8 +20,7 @@ public class ApplicationAction extends Action {
 
     @Override
     public void doAction() {
-        int selectedMenuOptions = Integer.parseInt(this.attributes.get(0).getValue().toString());
-        actions[selectedMenuOptions - 1].execute();
-        execute();
+        actions[findIntegerValueByAttributeName(ATT_FUNCTION) - 1].execute();
+        this.execute();
     }
 }

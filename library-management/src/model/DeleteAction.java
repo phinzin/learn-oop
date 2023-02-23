@@ -3,10 +3,13 @@ package model;
 import java.util.List;
 
 public class DeleteAction extends Action {
+    public static String ATT_NAME = "name";
+    public static String ATT_VALUE = "value";
+
     public DeleteAction(String message, List<CommonObject> objs) {
         super(message, objs);
-        attributes.add(new Attribute("name"));
-        attributes.add(new Attribute("value"));
+        attributes.add(new Attribute(ATT_NAME));
+        attributes.add(new Attribute(ATT_VALUE));
     }
 
 
@@ -14,8 +17,8 @@ public class DeleteAction extends Action {
     public void doAction() {
         CommonObject findDoc = null;
         for (CommonObject commonDocument : objs) {
-            if (commonDocument.findByAttribute(this.attributes.get(0).getValue().toString(),
-                                               this.attributes.get(1).getValue().toString()) != null) {
+            if (commonDocument.findByAttribute(this.findStringValueByAttributeName(ATT_NAME),
+                                               this.findStringValueByAttributeName(ATT_VALUE)) != null) {
                 findDoc = commonDocument;
             }
         }
