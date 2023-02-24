@@ -1,4 +1,6 @@
-package model;
+package model.documents;
+
+import java.util.Arrays;
 
 public enum DocumentType {
     BOOK(1),
@@ -12,9 +14,7 @@ public enum DocumentType {
     }
 
     public static DocumentType getEnumByValue(Integer code) {
-        for (DocumentType e : DocumentType.values()) {
-            if (e.value.equals(code)) return e;
-        }
-        return null;
+        return Arrays.stream(DocumentType.values())
+                     .filter(e->e.value.equals(code)).findFirst().get();
     }
 }

@@ -1,6 +1,9 @@
-package model;
+package model.documents;
 
-public class BaseDoc extends CommonObject{
+import model.Attribute;
+import model.CommonObject;
+
+public class BaseDoc extends CommonObject {
     public BaseDoc(){
         super();
         attributes.add(new Attribute("id"));

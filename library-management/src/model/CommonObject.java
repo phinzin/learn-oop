@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CommonObject {
-    List<Attribute> attributes;
+    protected List<Attribute> attributes;
 
     public CommonObject() {
         attributes = new ArrayList<>();
@@ -17,19 +17,16 @@ public abstract class CommonObject {
 
     public CommonObject findByAttribute(String name, String value) {
         if (this.attributes.stream()
-                           .filter(att -> att.getName().equals(name)
-                                   && (att.getValue().toString().equals(value) || value == null)
-                           )
+                           .filter(att -> att.equals(new Attribute(name,value)))
                            .findFirst()
-                           .get() != null) return this;
+                .isPresent()) return this;
         return null;
     }
 
     public String findStringValueByAttributeName(String name) {
         return this.attributes.stream()
                               .filter(att -> att.getName().equals(name))
-                              .findFirst()
-                              .get().getValue().toString();
+                              .findFirst().get().getValue().toString();
 
     }
 

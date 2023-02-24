@@ -1,10 +1,12 @@
-package model;
+package model.documents;
 
+
+import model.CommonObject;
 
 import java.security.InvalidParameterException;
 
 public class DocumentFactory {
-    public static CommonObject getDocument(DocumentType type) {
+    public static BaseDoc getDocument(DocumentType type) {
 
         switch (type) {
             case BOOK:

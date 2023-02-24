@@ -1,4 +1,6 @@
-package model;
+package model.documents;
+
+import model.Attribute;
 
 public class Book extends BaseDoc {
     public Book() {

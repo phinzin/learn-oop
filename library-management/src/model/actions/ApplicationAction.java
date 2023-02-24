@@ -1,11 +1,16 @@
-package model;
+package model.actions;
+
+import model.Attribute;
+import model.CommonObject;
+import model.Constants;
+import model.documents.BaseDoc;
 
 import java.util.List;
 
 public class ApplicationAction extends Action {
     Action[] actions;
     public static String ATT_FUNCTION = "function";
-    public ApplicationAction(String message, List<CommonObject> objs) {
+    public ApplicationAction(String message, List<BaseDoc> objs) {
         super(message, objs);
         attributes.add(new Attribute(ATT_FUNCTION));
         actions = new Action[]{

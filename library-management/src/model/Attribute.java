@@ -60,4 +60,15 @@ public class Attribute {
     public String toString() {
         return String.format("Attribute{name = %s, value= %s, isInput= %s}",name,value,isInput);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Attribute){
+            Attribute compareObj = (Attribute) obj;
+            if (this.getName().equals(compareObj.getName())  &&
+                this.getValue().equals(compareObj.getValue())
+            ) return true;
+        }
+        return  Boolean.FALSE;
+    }
 }

@@ -1,4 +1,6 @@
-package model;
+package model.documents;
+
+import model.Attribute;
 
 public class Magazine extends BaseDoc {
     public Magazine() {

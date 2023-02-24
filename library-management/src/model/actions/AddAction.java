@@ -1,10 +1,16 @@
-package model;
+package model.actions;
+
+import model.Attribute;
+import model.CommonObject;
+import model.documents.BaseDoc;
+import model.documents.DocumentFactory;
+import model.documents.DocumentType;
 
 import java.util.List;
 
 public class AddAction extends Action {
     public static String ATT_DOCUMENT = "document";
-    public AddAction(String message, List<CommonObject> objs) {
+    public AddAction(String message, List<BaseDoc> objs) {
         super(message, objs);
         attributes.add(new Attribute(ATT_DOCUMENT));
     }
@@ -13,8 +19,8 @@ public class AddAction extends Action {
     @Override
     public void doAction() {
         CommonObject document = DocumentFactory.getDocument(
-                                    DocumentType.getEnumByValue(
+                DocumentType.getEnumByValue(
                                         findIntegerValueByAttributeName(ATT_DOCUMENT)));
-        objs.add(document.inputData());
+        objs.add((BaseDoc) document.inputData());
     }
 }
