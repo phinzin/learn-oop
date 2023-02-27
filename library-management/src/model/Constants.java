@@ -3,6 +3,7 @@ package model;
 public class Constants {
     public static final String EXIT = "exit";
     public static final String SEARCH_DOCUMENT = "search document";
+    public static final String INPUT_ERROR = "invalid input, maximum options is: ";
     public static String ROOT_MENU =
             "1. Add documents.\n2. Delete Document.\n3. Display Document Info.\n4. Search " + "Document.\n5. Exit Program.";
     public static String ADD_DOC_MENU = "1. Book.\n2. Newspaper.\n3. Magazine.";
