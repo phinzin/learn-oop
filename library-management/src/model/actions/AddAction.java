@@ -2,10 +2,14 @@ package model.actions;
 
 import model.Attribute;
 import model.CommonObject;
+import model.Constants;
 import model.documents.BaseDoc;
 import model.documents.DocumentFactory;
 
+import java.security.InvalidParameterException;
 import java.util.List;
+
+import static model.documents.DocumentType.getTotalEnumDocument;
 
 public class AddAction extends Action {
     public static String ATT_DOCUMENT = "document";
@@ -18,8 +22,13 @@ public class AddAction extends Action {
 
     @Override
     public void doAction() {
-        CommonObject document = DocumentFactory.getDocument(
-                findIntegerValueByAttributeName(ATT_DOCUMENT));
+        CommonObject document = null;
+        try {
+            document = DocumentFactory.getDynamicDocument(
+                    findIntegerValueByAttributeName(ATT_DOCUMENT));
+        } catch (Exception e) {
+            throw new InvalidParameterException(Constants.INPUT_ERROR + getTotalEnumDocument());
+        }
         objs.add((BaseDoc) document.inputData());
     }
 }
